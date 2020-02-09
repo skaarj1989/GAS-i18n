@@ -38,17 +38,23 @@ function getTranslations(sheet) {
 ![Google Sheet](/img/sheet.PNG)
 
 ```javascript
-function foo() {
+function buildTranslations() {
 	const spreadsheet = SpreadsheetApp.openById(
 			'1aNH-NGNhCgt4Mb_Tjc2qLacKT3t-KTCoNd_25TjFK-0'
 		),
 		sheet = spreadsheet.getActiveSheet();
 
-	const translations = i18n.getTranslations(sheet);
+	const messages = getTranslations(sheet);
+
+	/*
+	const jsonStr = JSON.stringify(messages, null, 2);
+	DriveApp.createFile('messages.json', jsonStr); // create new file on Google Drive
+	DriveApp.getFileById('google-drive-file-id').setContent(jsonStr); // update file
+	*/
 }
 
 /*
-translations = { 
+messages = { 
     en: {
       $vuetify: {
         close: 'Close',
